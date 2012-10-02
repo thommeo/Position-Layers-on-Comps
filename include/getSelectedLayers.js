@@ -45,17 +45,17 @@ function getSelectedLayersIdx(){
 	var ref = new ActionReference();
 	ref.putEnumerated( charIDToTypeID("Dcmn"), charIDToTypeID("Ordn"), charIDToTypeID("Trgt") );
 	var desc = executeActionGet(ref);
-	if( desc.hasKey( stringIDToTypeID( 'targetLayers' ) ) ){
-	 desc = desc.getList( stringIDToTypeID( 'targetLayers' ));
+	if ( desc.hasKey( stringIDToTypeID( 'targetLayers' ) ) ){
+		desc = desc.getList( stringIDToTypeID( 'targetLayers' ));
 		var c = desc.count
 		var selectedLayers = new Array();
-		for(var i=0;i<c;i++){
-		try{
-			 activeDocument.backgroundLayer;
-			 selectedLayers.push(  desc.getReference( i ).getIndex() );
-		}catch(e){
-			 selectedLayers.push(  desc.getReference( i ).getIndex()+1 );
-		}
+		for( var i=0; i<c; i++ ){
+			try{
+				 activeDocument.backgroundLayer;
+				 selectedLayers.push( desc.getReference(i).getIndex() );
+			}catch(e){
+				 selectedLayers.push( desc.getReference(i).getIndex() + 1 );
+			}
 		}
 	}else{
 		var ref = new ActionReference();
